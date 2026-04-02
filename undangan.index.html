@@ -1,0 +1,67 @@
+<section class="countdown" data-aos="fade-up">
+        <div class="container">
+            <h2>Menuju Hari Bahagia</h2>
+            <div id="timer">
+                <div class="time-box">
+                    <span id="days">00</span>
+                    <p>Hari</p>
+                </div>
+                <div class="time-box">
+                    <span id="hours">00</span>
+                    <p>Jam</p>
+                </div>
+                <div class="time-box">
+                    <span id="minutes">00</span>
+                    <p>Menit</p>
+                </div>
+                <div class="time-box">
+                    <span id="seconds">00</span>
+                    <p>Detik</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="rsvp" data-aos="zoom-in">
+        <div class="container">
+            <div class="rsvp-card">
+                <h2>Buku Tamu</h2>
+                <p>Mohon konfirmasi kehadiran Anda melalui formulir di bawah ini:</p>
+                <form id="rsvp-form">
+                    <input type="text" placeholder="Nama Lengkap" required>
+                    <select required>
+                        <option value="" disabled selected>Konfirmasi Kehadiran</option>
+                        <option value="Hadir">Hadir</option>
+                        <option value="Tidak Hadir">Tidak Hadir</option>
+                    </select>
+                    <textarea placeholder="Ucapan & Doa Restu" rows="4"></textarea>
+                    <button type="submit">Kirim Pesan</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Set tanggal pernikahan (Tahun, Bulan-1, Tanggal, Jam, Menit)
+        const weddingDate = new Date("Oct 12, 2024 09:00:00").getTime();
+
+        const x = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = weddingDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerHTML = days;
+            document.getElementById("hours").innerHTML = hours;
+            document.getElementById("minutes").innerHTML = minutes;
+            document.getElementById("seconds").innerHTML = seconds;
+
+            if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("timer").innerHTML = "HARI BAHAGIA TELAH TIBA";
+            }
+        }, 1000);
+    </script>
